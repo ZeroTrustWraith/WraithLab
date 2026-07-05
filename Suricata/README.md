@@ -28,7 +28,7 @@ This technical brief documents the design, implementation, and verification of a
    └────────────┼────────────────────────────────────────────────────────────────────────┘
                 │
                 ▼
-     [ Python Forwarder Script ] ───► (Strips 192.168.x.x Topologies) ───► [ Discord Webhook ]
+     [ Python Forwarder Script ] ───► (Strips 10.10.x.x Topologies) ───► [ Discord Webhook ]
 ```     
      
 ## 💻 Technical Implementation Steps
