@@ -16,7 +16,6 @@ VLAN 30  | IDS          | Pi 4B         | Suricata, Log2Ram, Cron, Webhook scrip
 
 VLAN 40  | WiFi         | Router        | Router in AP-only mode
 
----------------------------------------------------------------------------------------------
 
 ## Phases
 * **Phase 1:** OPNSense
