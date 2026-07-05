@@ -32,7 +32,7 @@ Password-based SSH authentication was discarded in favor of explicit public-key 
   
   ```mkdir -m 700 ~/.ssh```
 
-* **Mount external hardware media containing the deployment public key**
+* **Mount external hardware media containing the deployment public key:**
 
   ```lsblk```
 
@@ -42,7 +42,7 @@ Password-based SSH authentication was discarded in favor of explicit public-key 
 
   ```ls -l /mnt/usb``` Note: lists files on USB
 
-* **Transfer public key and enforce strict filesystem permissions**
+* **Transfer public key and enforce strict filesystem permissions:**
 
   ```cp /mnt/usb/id_rsa.pub ~/.ssh/authorized_keys```
 
@@ -50,11 +50,11 @@ Password-based SSH authentication was discarded in favor of explicit public-key 
 
   ```cd```
 
-* **Cleanly unmount transient media**
+* **Cleanly unmount transient media:**
 
   ```sudo umount /mnt/usb```
 
-* **Initialize the OpenSSH daemon**
+* **Initialize the OpenSSH daemon:**
 
   ```sudo systemctl enable ssh --now```
 
@@ -92,6 +92,8 @@ If your IP is `10.10.100.x/24`, you will use the gateway `10.10.100.1` (unless y
 * Go down and select `ok` and press enter.
 
 * Press `escape` (ESC) and then go down and select `ok` and press enter again.
+
+* Force NetworkManager interface binding:
 
   ```sudo nmcli connection up "Wired connection 1"```
 
