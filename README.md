@@ -6,6 +6,7 @@ Production-grade documentation, architecture design, and deployment writeups for
 The core of the network is powered by OPNsense running on a Protectli Vault, which handles routing, firewall rules, and core network security straight from the ONT. Traffic is distributed via an 8-port managed switch using targeted VLAN segmentation.
 
 VLAN ID  |  Name        |  Subnet Scope |  Services
+
 ---------------------------------------------------------------------------------------------
 
 VLAN 10  | MGMT         | Main PC       | Secure access to network infrastructure management
