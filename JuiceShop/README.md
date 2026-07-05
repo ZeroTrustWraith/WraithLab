@@ -4,7 +4,7 @@
 
 A baseline installation of Raspberry Pi OS Lite (64-bit) was deployed out-of-band. Because the underlying system is highly resource-constrained, the configuration emphasizes minimal operational overhead and explicit security controls.
 
-**A. Localization Layout & Password Rotations**
+### A. Localization Layout & Password Rotations
 
 To mitigate keyboard mapping conflicts when entering complex cryptographic passphrases during initialization, a progressive password rotation strategy was enforced:
 
@@ -24,7 +24,7 @@ To mitigate keyboard mapping conflicts when entering complex cryptographic passp
 
   ```passwd```
 
-**B. Public-Key Authentication & FIDO2 Hardware Attestation**
+### B. Public-Key Authentication & FIDO2 Hardware Attestation
 
 Password-based SSH authentication was discarded in favor of explicit public-key cryptography. For enhanced physical operational security, the deployment leverages an out-of-band FIDO2 hardware key paired with an explicit user passphrase.
 
@@ -58,7 +58,7 @@ Password-based SSH authentication was discarded in favor of explicit public-key 
 
   ```sudo systemctl enable ssh --now```
 
-**C. Persistent Storage I/O Optimization**
+### C. Persistent Storage I/O Optimization
 
 To facilitate reliable storage operations when utilizing MicroSD-to-USB hardware translation adapters, the firmware boot properties were tuned to prevent interface race conditions:
 
@@ -68,7 +68,7 @@ Add this line to the bottom of the file: `program_usb_timeout=1`
 
 `CTRL + O`, `enter`, `CTRL + X`, `enter`.
 
-**D. Deterministic Network Layer Provisioning**
+### D. Deterministic Network Layer Provisioning
 
 To lock the host onto `VLAN 20` without relying on dynamic DHCP polling overhead, static IP assignments were implemented natively via the NetworkManager Text User Interface (`nmtui`) and command-line engine (`nmcli`):
 
