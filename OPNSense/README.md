@@ -21,3 +21,7 @@ To enforce a zero-trust architecture, strict packet filtering rules were impleme
 * **Floating Rules (Global Block):** High-priority Floating Rules were established to drop all inter-VLAN traffic targeting the VLAN 10 (MGMT) interface, preventing lateral privilege escalation from lower-privilege zones. An explicit default-deny rule was applied to VLAN 40 (WLAN), isolating wireless clients from all other local RFC 1918 subnets.
 
 * **Interface-Specific Rules (Targeted Administration):** Explicit pass rules were defined on the VLAN 10 interface to permit out-of-band SSH and management traffic strictly to designated endpoints within VLAN 20 (Labs) and VLAN 30 (IDS).
+
+### Author's Note:
+
+Final deployment required additional configurations for NAT and DNS resolution once connected to the WAN.
