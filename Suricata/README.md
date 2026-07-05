@@ -50,7 +50,7 @@ To prevent physical media degradation from volatile log structures like eve.json
 Set: `SIZE=256M`
 
 * **Apply filesystem mounts via reboot**
-* 
+
 ```sudo reboot```
 
 ### 2. High-Performance Hardening of Suricata
@@ -262,7 +262,7 @@ Added line to evaluate metrics every 30 minutes:
 
 ```*/30 * * * * /bin/bash /usr/local/bin/log2ram_monitor.sh >/dev/null 2>&1```
 
-### 🔍 Validation & Pipeline Proof Verification
+### 6. 🔍 Validation & Pipeline Proof Verification
 
 To prove the validity of the detection engine, filtering array parameters, and sanitization code strings under simulated stress conditions, an attack vector test signature was fired at the network adapter:
 
