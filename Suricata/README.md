@@ -4,9 +4,7 @@ This technical brief documents the design, implementation, and verification of a
 
 🛠 Architecture & Component DesignThe sensor deployment is engineered across four structural layers:
 
-* **Packet Capture & Inspection Layer (Suricata):** Binds to a local network interface to aggressively analyze frames against thousands of known malicious structural definitions.
-
-**Implemented via a dual-NIC configuration:** a stealth interface stripped of an IP allocation running in pure promiscuous mode to ingest SPAN mirror traffic, paired with a secondary isolated physical interface linked to the SEC_MONITOR management plane.
+* **Packet Capture & Inspection Layer (Suricata):** Binds to a local network interface to aggressively analyze frames against thousands of known malicious structural definitions. **Implemented via a dual-NIC configuration:** a stealth interface stripped of an IP allocation running in pure promiscuous mode to ingest SPAN mirror traffic, paired with a secondary isolated physical interface linked to the SEC_MONITOR management plane.
 
 * **Hardware Protection Layer (Log2Ram):** Mounts an isolated temporary filesystem (tmpfs) in memory, intercepting all directory operations hitting /var/log to eliminate persistent write amplification on physical storage media (SD Cards/SSDs).
 
