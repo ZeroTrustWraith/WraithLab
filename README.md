@@ -7,6 +7,7 @@ The core of the network is powered by OPNsense running on a Protectli Vault, whi
 
 VLAN ID  |  Name        |  Subnet Scope |  Services
 ---------------------------------------------------------------------------------------------
+
 VLAN 10  | MGMT         | Main PC       | Secure access to network infrastructure management
 
 VLAN 20  | Labs         | 2x Pi 3B+     | OWASP Juice Shop
@@ -14,4 +15,5 @@ VLAN 20  | Labs         | 2x Pi 3B+     | OWASP Juice Shop
 VLAN 30  | IDS          | Pi 4B         | Suricata, Log2Ram, Cron, Webhook script
 
 VLAN 40  | WiFi         | Router        | Router in AP-only mode
+
 ---------------------------------------------------------------------------------------------
