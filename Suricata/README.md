@@ -296,7 +296,7 @@ Notice the Traffic Direction Ledger metric. The source IP (3.168.2.70) is a publ
 
 This completely proves the security script logic is functioning perfectly: safeguarding core network topology maps from data leaks while providing total external threat intelligence visibility in real-time.
 
-### Deployment phase
+### 7. Deployment phase
 
 **1. Execute the following commands to configure systemd-resolved and establish a global DNS scope:** 
 
@@ -338,3 +338,44 @@ NOTE: Once the data is correct, the cron and scripts should be operational. The 
 The initial setup and testing was done via WiFi, which is not practical for real-time monitoring once connected to the stack via ethernet. In order to make this work, I had to configure the Suricata rules to use wlan0, which was later changed back to eth0 and additional rules were applied to allow promisc.
 
 Furthermore, while this prevents the majority of writing to the disk, it is still advised to keep an eye on your disk writes and storage space. This only solves 99% of the disk writes. I may work on fixing this at a later date.
+
+### 8. Static IP Configuration
+
+If you're using an Ubuntu server on the Raspberry Pi 4B and doing a dual-NIC setup, you will need to configure the network interface a particular way to avoid the interfaces clashing.
+
+First, locate your Netplan configuration file by listing the contents of the directory:
+
+```ls -la /etc/netplan/```
+
+Once you find the YAML file for your network configuration, edit it using `sudo nano /etc/netplan/<file_name>` 
+
+Use the following configuration layout to deploy your dual-NIC setup:
+
+```
+network:
+  version: 2
+  ethernets:
+    <VLAN_INTERFACE>: # i.e., enx[MAC_address]
+      match:
+        macaddress: "<MAC_ADDRESS_ONE>"
+      addresses:
+      - "<STATIC_IP>/24"
+      nameservers:
+        addresses:
+        - "<VLAN_GATEWAY>" # If you are using DNS-over-TLS through your router (preferred), otherwise specificy your DNS here.
+      dhcp4: false
+      dhcp6: false
+      optional: true
+      set-name: "<INTERFACE_NAME>" # i.e., enx[MAC_address]
+      routes:
+      - to: "default"
+        via: "<VLAN_GATEWAY>"
+    <SNIFFING_INTERFACE>:
+      match:
+        macaddress: "<MAC_ADDRESS_TWO>"
+      dhcp4: false
+      dhcp6: false
+      accept-ra: false
+      link-local: [ ]
+      optional: true
+```
