@@ -1,5 +1,53 @@
 # Phase 4: Compute Node Provisioning & Vulnerable Workload Staging
 
+**Note:** Due to resource constraints and Juice Shop v20+ requiring an open-weight LLM, I have moved Juice Shop to a cheap laptop with slightly better hardware. The device still has some constraints, which is why I opted to run Juice Shop bare metal instead of in a docker or VM. It is still possible to run Juice Shop bare metal on Pis with more resources, such as the Raspberry Pi 5. For that reason, I will keep the setup process for Juice Shop running bare metal on ARM architecture at the end of this README.
+
+**⚠️ CRITICAL SECURITY WARNING:**
+OWASP Juice Shop is an intentionally vulnerable application designed with severe security flaws (including Remote Code Execution, SQL Injection, and Cross-Site Scripting).
+
+Running this application bare-metal exposes your host system directly. It must be deployed on an isolated lab environment or a dedicated testing VLAN. The author assumes absolutely no liability for compromised hosts, data loss, network pivoting, or damages resulting from running this application on a production network or main VLAN. Deploy at your own risk.
+
+## 1. Requirements
+
+`nodejs`
+`npm`
+`ollama`
+
+## 2. Setup Process
+
+* **Install nodejs and npm:**
+
+  ```sudo apt update && sudo apt install nodejs npm -y```
+
+* **Install ollama:**
+
+  ```curl -fsSL https://ollama.com/install.sh | sh```
+
+* **Pull Gemma4 (e4b):**
+
+  ```ollama pull gemma4:e4b```
+
+* **Clone Juice Shop:**
+
+  ```git clone https://github.com/juice-shop/juice-shop.git --depth 1```
+
+* **Set up Juice Shop:**
+
+  ```cd juice-shop```
+  ```npm install```
+
+* **Start Juice Shop:**
+
+  ```npm start```
+
+Once you have installed the prerequisites and started Juice Shop, you will be able to access the vulnerable web application from your browser at `http://localhost:3000`
+
+In order to begin testing the vulnerable web application, I recommend installing `BurpSuite`, `ffuf`, `wordlists`/`seclists`, and `hashcat` or `John the Ripper` (alternatively, you can use `CyberChef` instead of installing `hashcat` or `john`). There are also other alternatives to some of these programs such as `OWASP ZAP`, `gobuster`, etc.
+
+# Juice Shop Bare Metal - ARM Architecture
+
+**Note:** There may be inconsistencies in the full setup and deployment of Juice Shop in this section of the writeup as I was unable to fully test Juice Shop on the Raspberry Pi 3B+ due to resource constraints. While it is possible to run older versions of the vulnerable web app on a resource-constrained device, such as a Pi 3B+, I decided to pivot to a laptop with more resources. In order to run older versions, it is highly likely you will need to troubleshoot this full setup process.
+
 ## 1. Operating System Initialization & Host Hardening
 
 A baseline installation of Raspberry Pi OS Lite (64-bit) was deployed out-of-band. Because the underlying system is highly resource-constrained, the configuration emphasizes minimal operational overhead and explicit security controls.
