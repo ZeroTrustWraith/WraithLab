@@ -44,9 +44,7 @@ Once you have installed the prerequisites and started Juice Shop, you will be ab
 
 In order to begin testing the vulnerable web application, I recommend installing `BurpSuite`, `ffuf`, `wordlists`/`seclists`, and `hashcat` or `John the Ripper` (alternatively, you can use `CyberChef` instead of installing `hashcat` or `john`). There are also other alternatives to some of these programs such as `OWASP ZAP`, `gobuster`, etc.
 
-# Juice Shop Bare Metal - ARM Architecture
-
-**Note:** There may be inconsistencies in the full setup and deployment of Juice Shop in this section of the writeup as I was unable to fully test Juice Shop on the Raspberry Pi 3B+ due to resource constraints. While it is possible to run older versions of the vulnerable web app on a resource-constrained device, such as a Pi 3B+, I decided to pivot to a laptop with more resources. In order to run older versions, it is highly likely you will need to troubleshoot this full setup process.
+# Raspberry Pi OS Lite Setup Process
 
 ## 1. Operating System Initialization & Host Hardening
 
@@ -137,6 +135,8 @@ If your IP is `10.10.100.x/24`, you will use the gateway `10.10.100.1` (unless y
 
 * Configure your DNS (common DNS servers include `1.1.1.1` or `8.8.8.8`, but you can use whatever DNS provider you prefer).
 
+Note: If you are relying on DNS-over-TLS via OPNSense on your router, you will need to use your gateway as your DNS server.
+
 * Go down and select `ok` and press enter.
 
 * Press `escape` (ESC) and then go down and select `ok` and press enter again.
@@ -152,7 +152,11 @@ If your IP is `10.10.100.x/24`, you will use the gateway `10.10.100.1` (unless y
   ```ip a show eth0``` Note: You should see your static IP if done correctly
 
 
-## 2. Bare-Metal OWASP Juice Shop Compilation & Systemd Orchestration
+# 2.Juice Shop Bare Metal - ARM Architecture
+
+**Note:** There may be inconsistencies in the full setup and deployment of Juice Shop in this section of the writeup as I was unable to fully test Juice Shop on the Raspberry Pi 3B+ due to resource constraints. While it is possible to run older versions of the vulnerable web app on a resource-constrained device, such as a Pi 3B+, I decided to pivot to a laptop with more resources. In order to run older versions, it is highly likely you will need to troubleshoot this full setup process.
+
+## Original Write-up:
 
 Rather than relying on heavy containerization due to resource constraints, the vulnerable testing application was compiled cleanly as a native, bare-metal node application.
 
