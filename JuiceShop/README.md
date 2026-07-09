@@ -7,6 +7,8 @@ OWASP Juice Shop is an intentionally vulnerable application designed with severe
 
 Running this application bare-metal exposes your host system directly. It must be deployed on an isolated lab environment or a dedicated testing VLAN. The author assumes absolutely no liability for compromised hosts, data loss, network pivoting, or damages resulting from running this application on a production network or main VLAN. Deploy at your own risk.
 
+# OWASP Juice Shop for Linux x64
+
 ## 1. Requirements
 
 `nodejs`
